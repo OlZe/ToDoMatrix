@@ -1,0 +1,6 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+  <h3>Todo:</h3>
+
+  <app-task-card *ngFor="let task of getTasks()" [task]="task">
+  </app-task-card>
+</div>

@@ -11,9 +11,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { TodoTaskCardComponent } from './components/todo-task-card.component';
-import { TodoListComponent } from './components/todo-list.component';
-import { TodoTasksService } from './model/todoTasks.service';
+import { TaskCardComponent } from './components/task-card.component';
+import { TaskListComponent } from './components/task-list.component';
+import { TasksService } from './model/tasks.service';
 import { CreateTaskButtonComponent } from './components/create-task-button.component';
 import { CreateTaskDialogComponent } from './components/create-task-dialog.component';
 import { FormsModule } from '@angular/forms';
@@ -21,8 +21,8 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    TodoListComponent,
-    TodoTaskCardComponent,
+    TaskListComponent,
+    TaskCardComponent,
     CreateTaskButtonComponent,
     CreateTaskDialogComponent
   ],
@@ -40,7 +40,7 @@ import { FormsModule } from '@angular/forms';
     MatInputModule
   ],
   providers: [
-    TodoTasksService
+    TasksService
   ],
   bootstrap: [AppComponent]
 })

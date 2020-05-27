@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateTaskDialogComponent } from './create-task-dialog.component';
-import { TodoTasksService } from '../model/todoTasks.service';
+import { TasksService } from '../model/tasks.service';
 
 @Component({
     selector: 'app-create-task-button',
@@ -11,13 +11,13 @@ export class CreateTaskButtonComponent {
 
     constructor(
         private createTaskDialog: MatDialog,
-        private todoTasksService: TodoTasksService) { }
+        private tasksService: TasksService) { }
 
     public createNewTask() {
         const dialogHandle = this.createTaskDialog.open(CreateTaskDialogComponent);
         dialogHandle.afterClosed().subscribe(title => {
             if (title) {
-                this.todoTasksService.addTodoTask({ title });
+                this.tasksService.addTask({ title });
             }
         });
     }

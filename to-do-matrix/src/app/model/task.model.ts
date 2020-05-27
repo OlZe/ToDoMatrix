@@ -1,3 +1,3 @@
-export class TodoTask {
+export class Task {
     public title: string;
 }
