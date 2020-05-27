@@ -9,6 +9,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { TodoTaskCardComponent } from './components/todo-task-card.component';
 import { TodoListComponent } from './components/todo-list.component';
+import { TodoTasksService } from './model/todoTasks.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { TodoListComponent } from './components/todo-list.component';
     FlexLayoutModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [
+    TodoTasksService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

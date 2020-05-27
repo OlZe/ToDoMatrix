@@ -7,9 +7,10 @@ import { TodoTasksService } from '../model/todoTasks.service';
     templateUrl: './todo-list.component.html'
 })
 export class TodoListComponent {
-    public todoTasks: TodoTask[];
 
-    public constructor() {
-        this.todoTasks = new TodoTasksService().getTodoTasks();
+    public constructor(private todoTasksService: TodoTasksService) { }
+
+    public getTodoTasks(): TodoTask[] {
+        return this.todoTasksService.getTodoTasks();
     }
 }
