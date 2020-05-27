@@ -13,4 +13,8 @@ export class TodoTasksService {
     public getTodoTasks(): TodoTask[] {
         return this.todoTasks;
     }
+
+    public addTodoTask(task: TodoTask) {
+        this.todoTasks.push(task);
+    }
 }
