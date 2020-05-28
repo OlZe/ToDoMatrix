@@ -18,10 +18,13 @@ import { CreateTaskButtonComponent } from './components/create-task-button.compo
 import { CreateTaskDialogComponent } from './components/create-task-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { EisenhowerMatrixComponent } from './components/eisenhower-matrix.component';
+import { AppRoutingModule } from './app-routing.module';
+import { OverviewComponent } from './components/overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    OverviewComponent,
     TaskListComponent,
     TaskCardComponent,
     CreateTaskButtonComponent,
@@ -39,7 +42,8 @@ import { EisenhowerMatrixComponent } from './components/eisenhower-matrix.compon
     MatIconModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    AppRoutingModule
   ],
   providers: [
     TasksService
