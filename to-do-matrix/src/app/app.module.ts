@@ -20,11 +20,14 @@ import { FormsModule } from '@angular/forms';
 import { EisenhowerMatrixComponent } from './components/eisenhower-matrix.component';
 import { AppRoutingModule } from './app-routing.module';
 import { OverviewComponent } from './components/overview.component';
+import { EditTaskComponent } from './components/edit-task.component';
+import { TaskExistsGuard } from './model/task-exists.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     OverviewComponent,
+    EditTaskComponent,
     TaskListComponent,
     TaskCardComponent,
     CreateTaskButtonComponent,
@@ -46,7 +49,8 @@ import { OverviewComponent } from './components/overview.component';
     AppRoutingModule
   ],
   providers: [
-    TasksService
+    TasksService,
+    TaskExistsGuard
   ],
   bootstrap: [AppComponent]
 })
