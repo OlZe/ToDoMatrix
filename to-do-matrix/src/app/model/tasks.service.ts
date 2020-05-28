@@ -29,6 +29,12 @@ export class TasksService {
         this.saveTasksToLocalStorage();
     }
 
+    public deleteTask(id: number) {
+        const taskIndex = this.tasks.findIndex(t => t.id === id);
+        this.tasks.splice(taskIndex, 1);
+        this.saveTasksToLocalStorage();
+    }
+
     private loadTasksFromLocalStorage() {
         try {
             this.tasks = JSON.parse(localStorage.getItem(TASK_KEY)) ?? [];
