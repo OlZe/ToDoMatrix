@@ -1,5 +1,6 @@
 import { Task } from './task.model';
 import { Injectable } from '@angular/core';
+import { NewTask } from './new-task.model';
 
 
 const TASK_KEY = 'tasks';
@@ -23,9 +24,9 @@ export class TasksService {
         return this.tasks.find(t => t.id === id);
     }
 
-    public addTask(title: string) {
+    public addTask(newTask: NewTask) {
         const id = this.getNextId();
-        this.tasks.push({ id, title });
+        this.tasks.push({ id, ...newTask });
         this.saveTasksToLocalStorage();
     }
 
@@ -51,7 +52,6 @@ export class TasksService {
     private getNextId(): number {
         let id: number;
         for (id = 0; this.getTask(id); id++) { }
-        console.log(id);
         return id;
     }
 }
