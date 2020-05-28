@@ -17,6 +17,7 @@ import { TasksService } from './model/tasks.service';
 import { CreateTaskButtonComponent } from './components/create-task-button.component';
 import { CreateTaskDialogComponent } from './components/create-task-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { EisenhowerMatrixComponent } from './components/eisenhower-matrix.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     TaskListComponent,
     TaskCardComponent,
     CreateTaskButtonComponent,
-    CreateTaskDialogComponent
+    CreateTaskDialogComponent,
+    EisenhowerMatrixComponent
   ],
   imports: [
     BrowserModule,
