@@ -6,12 +6,7 @@ const TASK_KEY = 'tasks';
 
 @Injectable()
 export class TasksService {
-    private tasks: Task[] = [
-        { title: 'task1' },
-        { title: 'task2' },
-        { title: 'task3' },
-        { title: 'task4' }
-    ];
+    private tasks: Task[];
 
     constructor() {
         this.loadTasksFromLocalStorage();
@@ -24,8 +19,13 @@ export class TasksService {
         return this.tasks;
     }
 
-    public addTask(task: Task) {
-        this.tasks.push(task);
+    public getTask(id: number): Task {
+        return this.tasks.find(t => t.id === id);
+    }
+
+    public addTask(title: string) {
+        const id = this.getNextId();
+        this.tasks.push({ id, title });
         this.saveTasksToLocalStorage();
     }
 
@@ -40,5 +40,12 @@ export class TasksService {
 
     private saveTasksToLocalStorage() {
         localStorage.setItem(TASK_KEY, JSON.stringify(this.tasks));
+    }
+
+    private getNextId(): number {
+        let id: number;
+        for (id = 0; this.getTask(id); id++) { }
+        console.log(id);
+        return id;
     }
 }

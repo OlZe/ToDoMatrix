@@ -17,7 +17,7 @@ export class CreateTaskButtonComponent {
         const dialogHandle = this.createTaskDialog.open(CreateTaskDialogComponent);
         dialogHandle.afterClosed().subscribe(title => {
             if (title) {
-                this.tasksService.addTask({ title });
+                this.tasksService.addTask(title);
             }
         });
     }
