@@ -1,4 +1,4 @@
-import { PATHS } from '../app-paths.model';
+import { ROUTE_PATHS } from '../app-paths.model';
 import { CanActivate, ActivatedRouteSnapshot, Router, UrlTree } from '@angular/router';
 import { TasksService } from './tasks.service';
 import { Injectable } from '@angular/core';
@@ -17,7 +17,7 @@ export class TaskExistsGuard implements CanActivate {
     }
 
     private redirectToOverview(): UrlTree {
-        return this.router.parseUrl(PATHS.OVERVIEW());
+        return this.router.parseUrl(ROUTE_PATHS.OVERVIEW());
     }
 
 }
