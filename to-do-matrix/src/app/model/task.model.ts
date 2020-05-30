@@ -1,6 +1,5 @@
-export class Task {
+import { NewTask } from './new-task.model';
+
+export class Task extends NewTask {
     public id: number;
-    public title: string;
-    public importance: number;
-    public urgency: number;
 }
