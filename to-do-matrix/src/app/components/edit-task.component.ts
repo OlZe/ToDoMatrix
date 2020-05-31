@@ -5,6 +5,7 @@ import { PATH_DEFINITIONS } from '../app-paths.model';
 import { NewTask } from '../model/new-task.model';
 import { TasksService } from '../model/tasks.service';
 import { Task } from '../model/task.model';
+import { TitlebarService } from '../model/titlebar.service';
 
 @Component({
     templateUrl: './edit-task.component.html'
@@ -14,8 +15,9 @@ export class EditTaskComponent {
     public task: NewTask;
     public PATHS = ROUTE_PATHS;
 
-    constructor(private tasksService: TasksService, route: ActivatedRoute) {
+    constructor(private tasksService: TasksService, route: ActivatedRoute, titlebarService: TitlebarService) {
         this.creatingNewTask = route.snapshot.routeConfig.path === PATH_DEFINITIONS.CREATE_TASK;
+        titlebarService.setTitlebarText(this.creatingNewTask ? 'Create new task' : 'Edit task');
         const possibleId: number = Number.parseInt(route.snapshot.paramMap.get(PATH_DEFINITIONS.EDIT_TASK_ID_KEY), 10);
         this.task = this.prepareTaskObject(possibleId);
     }
