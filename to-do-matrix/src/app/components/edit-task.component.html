@@ -13,7 +13,7 @@
     </mat-form-field>
 </div>
 
-<a mat-raised-button color="primary" [routerLink]="PATHS.OVERVIEW()" (click)="save()">
+<a [disabled]="!canSave()" (click)="save()" [routerLink]="canSave() ? PATHS.OVERVIEW() : '.'" mat-raised-button color="primary">
     {{ creatingNewTask ? 'Save new task' : 'Save changes' }}
 </a>
 <a mat-button color="secondary" [routerLink]="PATHS.OVERVIEW()">

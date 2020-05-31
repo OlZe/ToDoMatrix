@@ -23,20 +23,26 @@ export class EditTaskComponent {
     }
 
     public save() {
-        if (this.creatingNewTask) {
-            if (this.task.title) {
+        if (this.canSave()) {
+            if (this.creatingNewTask) {
                 this.tasksService.addTask(this.task);
             }
+            else {
+                this.tasksService.saveEditedTask(this.task as Task);
+            }
         }
-        else {
-            this.tasksService.saveEditedTask(this.task as Task);
-        }
+    }
+
+    public canSave(): boolean {
+        return !!this.task.title;
     }
 
     private prepareTaskObject(id?: number): NewTask {
         let task: NewTask;
         if (this.creatingNewTask) {
             task = new NewTask();
+            task.importance = 50;
+            task.urgency = 50;
         }
         else {
             task = this.tasksService.getTaskCopy(id);
