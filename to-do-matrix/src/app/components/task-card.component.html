@@ -1,14 +1,20 @@
-<mat-card fxLayout="row" fxLayoutAlign="space-between baseline">
-  <p>{{ task.title }}</p>
+<mat-card style="padding-right: 8px;">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <!-- text part -->
+    <div style="overflow: hidden">
+      <h4 style="margin: 0px; word-wrap: break-word;">{{ task.title }}</h4>
+      <span style="font-size: 7pt;">{{ urgencyText }}, {{ importanceText }}</span>
+    </div>
 
-  <div fxLayout="row">
-    <a mat-icon-button [routerLink]="PATHS.EDIT_TASK(task.id)">
-      <mat-icon>edit</mat-icon>
-    </a>
+    <!-- button part -->
+    <div fxLayout="row">
+      <a mat-icon-button [routerLink]="PATHS.EDIT_TASK(task.id)">
+        <mat-icon>edit</mat-icon>
+      </a>
 
-    <button mat-icon-button (click)="deleteThisTask()">
-      <mat-icon>delete</mat-icon>
-    </button>
+      <button mat-icon-button (click)="deleteThisTask()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
   </div>
-
 </mat-card>

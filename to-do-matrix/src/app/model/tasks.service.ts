@@ -30,6 +30,14 @@ export class TasksService {
         return this.createCopyOfTask(originalTask);
     }
 
+    public getTextRepresentationForImportance(importance: number): string {
+        return this.getAdverbForTextRepresentation(importance) + 'important';
+    }
+
+    public getTextRepresentationForUrgency(urgency: number): string {
+        return this.getAdverbForTextRepresentation(urgency) + 'urgent';
+    }
+
     public addTask(newTask: NewTask) {
         const id = this.getNextId();
         this.tasks.push({ id, ...newTask });
@@ -72,5 +80,13 @@ export class TasksService {
         const t = new Task();
         Object.assign(t, task);
         return task;
+    }
+
+    private getAdverbForTextRepresentation(value: number): string {
+        return  value >= 85 ? 'extremly ' :
+                value >= 70 ? 'highly ' :
+                value >= 50 ? '' :
+                value >= 25 ? 'slightly ' :
+                'not ';
     }
 }
