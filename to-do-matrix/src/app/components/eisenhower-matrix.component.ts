@@ -15,12 +15,12 @@ export class EisenhowerMatrixComponent {
 
     public getXForTask(task: Task): number {
         // Scale 0-100 to 3-98
-        return ((task.importance / 100) * 95) + 3;
+        return ((task.urgency / 100) * 95) + 3;
     }
 
     public getYForTask(task: Task): number {
         // Scale 0-100 to 2-65
-        const urgency = 100 - task.urgency; // negate because higher urgency is a lower Y-value
-        return ((urgency / 100) * 63) + 2;
+        const importance = 100 - task.importance; // negate because higher importance is a lower Y-value
+        return ((importance / 100) * 63) + 2;
     }
 }
