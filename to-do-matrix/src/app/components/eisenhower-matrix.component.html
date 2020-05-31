@@ -12,24 +12,27 @@
              65 |_______________|_______________|    urgency
                 3               51              99 
  -->
-<svg width="100%" viewBox="0 0 100 68">
+<div style="padding: 10px 10px 0px 10px; box-sizing: border-box;">
+   <svg width="100%" viewBox="0 0 100 68">
 
-   <!-- Draw helper lines first so the main lines go over the helper lines -->
-   <!-- helper line horizontal -->
-   <line x1="3" y1="33" x2="99" y2="33" stroke="#777777" stroke-linecap="round" stroke-width="0.3" />
+      <!-- Draw helper lines first so the main lines go over the helper lines -->
+      <!-- helper line horizontal -->
+      <line x1="3" y1="33" x2="99" y2="33" stroke="#777777" stroke-linecap="round" stroke-width="0.3" />
 
-   <!-- helper line vertical -->
-   <line x1="51" y1="65" x2="51" y2="1" stroke="#777777" stroke-linecap="round" stroke-width="0.3" />
+      <!-- helper line vertical -->
+      <line x1="51" y1="65" x2="51" y2="1" stroke="#777777" stroke-linecap="round" stroke-width="0.3" />
 
-   <!-- x-axis -->
-   <line x1="3" y1="65" x2="99" y2="65" stroke="#ffffff" stroke-linecap="round" stroke-width="0.5" />
-   <text x="99" y="65" font-size="3" fill="#aaaaaa" dominant-baseline="hanging" text-anchor="end">URGENCY</text>
+      <!-- x-axis -->
+      <line x1="3" y1="65" x2="99" y2="65" stroke="#ffffff" stroke-linecap="round" stroke-width="0.5" />
+      <text x="99" y="65" font-size="3" fill="#aaaaaa" dominant-baseline="hanging" text-anchor="end">URGENCY</text>
 
-   <!-- y-axis -->
-   <line x1="3" y1="65" x2="3" y2="1" stroke="#ffffff" stroke-linecap="round" stroke-width="0.5" />
-   <text x="-1" y="-0.5" font-size="3" fill="#aaaaaa" dominant-baseline="hanging" text-anchor="end"
-      transform="rotate(270)">IMPORTANCE</text>
+      <!-- y-axis -->
+      <line x1="3" y1="65" x2="3" y2="1" stroke="#ffffff" stroke-linecap="round" stroke-width="0.5" />
+      <text x="-1" y="-0.5" font-size="3" fill="#aaaaaa" dominant-baseline="hanging" text-anchor="end"
+         transform="rotate(270)">IMPORTANCE</text>
 
-   <!-- Task points -->
-   <circle *ngFor="let task of getTasks()" r="2" fill="#c2185b" [attr.cx]="getXForTask(task)" [attr.cy]="getYForTask(task)"></circle>
-</svg>
+      <!-- Task points -->
+      <circle *ngFor="let task of getTasks()" r="2" fill="#c2185b" [attr.cx]="getXForTask(task)"
+         [attr.cy]="getYForTask(task)"></circle>
+   </svg>
+</div>
