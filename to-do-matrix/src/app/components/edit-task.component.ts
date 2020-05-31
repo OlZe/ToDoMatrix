@@ -13,6 +13,7 @@ import { TitlebarService } from '../model/titlebar.service';
 export class EditTaskComponent {
     public creatingNewTask: boolean;
     public task: NewTask;
+    public isDragging = false;
     public PATHS = ROUTE_PATHS;
 
     constructor(private tasksService: TasksService, route: ActivatedRoute, titlebarService: TitlebarService) {
@@ -35,6 +36,51 @@ export class EditTaskComponent {
 
     public canSave(): boolean {
         return !!this.task.title;
+    }
+
+    public getXForTask(): number {
+        // Scale 0-100 to 3-98
+        return ((this.task.urgency / 100) * 95) + 3;
+    }
+
+    public getYForTask(): number {
+        // Scale 0-100 to 2-65
+        const importance = 100 - this.task.importance; // negate because higher importance is a lower Y-value
+        return ((importance / 100) * 63) + 2;
+    }
+
+    public onMousedown(event: MouseEvent) {
+        window.addEventListener('mouseup', this.onMouseup);
+        this.isDragging = true;
+        this.drag(event);
+    }
+
+    public onMousemove(event: MouseEvent) {
+        if (this.isDragging) {
+            this.drag(event);
+        }
+    }
+
+    public onMouseup = (event: MouseEvent) => {
+        window.removeEventListener('mouseup', this.onMouseup);
+        this.isDragging = false;
+    }
+
+    private drag(event: MouseEvent) {
+        const target: SVGRectElement = event.target as SVGRectElement;
+        const dimensions = target.getBoundingClientRect();
+        const width = dimensions.width;
+        const height = dimensions.height;
+        const x = event.clientX - dimensions.left;
+        const y = event.clientY - dimensions.top;
+
+        // Scale (0 - width) to (0 - 100)
+        const newUrgency = Math.round((x / width) * 100);
+        // Scale (0 - height) to (0 - 100)
+        const invertedY = height - y;
+        const newImportance = Math.round((invertedY / height) * 100);
+        this.task.importance = newImportance;
+        this.task.urgency = newUrgency;
     }
 
     private prepareTaskObject(id?: number): NewTask {
