@@ -33,6 +33,14 @@ export class EditTaskComponent {
         }
     }
 
+    public getImportanceText(): string {
+        return this.tasksService.getTextRepresentationForImportance(this.task.importance);
+    }
+
+    public getUrgencyText(): string {
+        return this.tasksService.getTextRepresentationForUrgency(this.task.urgency);
+    }
+
     public canSave(): boolean {
         return !!this.task.title;
     }

@@ -1,24 +1,22 @@
-<div fxLayout="column">
+<div fxLayout="column" fxLayoutAlign="start stretch">
   <app-eisenhower-matrix [tasksToPlot]="[task]" (dragOnMatrix)="onDragMatrix($event)"></app-eisenhower-matrix>
+  <div fxLayout="row" fxLayoutAlign="space-between baseline">
+    <p class="mat-small" style="margin-left: 20px; margin-top: 0px;">{{ getImportanceText() }}</p>
+    <p class="mat-small" style="margin-right: 20px; margin-top: 0px;">{{ getUrgencyText() }}</p>
+  </div>
 
-  <mat-form-field>
-    <mat-label>title</mat-label>
-    <input matInput [(ngModel)]="task.title">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Importance</mat-label>
-    <input matInput type="number" min="0" max="100" [(ngModel)]="task.importance">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Urgency</mat-label>
-    <input matInput type="number" min="0" max="100" [(ngModel)]="task.urgency">
-  </mat-form-field>
+  <div style="padding: 15px; box-sizing: border-box;">
+    <mat-form-field style="width: 100%">
+      <mat-label>title</mat-label>
+      <input matInput [(ngModel)]="task.title">
+    </mat-form-field>
+    <br>
+    <a [disabled]="!canSave()" (click)="save()" [routerLink]="canSave() ? PATHS.OVERVIEW() : '.'" mat-raised-button
+      color="primary">
+      {{ creatingNewTask ? 'Save new task' : 'Save changes' }}
+    </a>
+    <a mat-button color="secondary" [routerLink]="PATHS.OVERVIEW()">
+      cancel
+    </a>
+  </div>
 </div>
-
-<a [disabled]="!canSave()" (click)="save()" [routerLink]="canSave() ? PATHS.OVERVIEW() : '.'" mat-raised-button
-  color="primary">
-  {{ creatingNewTask ? 'Save new task' : 'Save changes' }}
-</a>
-<a mat-button color="secondary" [routerLink]="PATHS.OVERVIEW()">
-  cancel
-</a>
