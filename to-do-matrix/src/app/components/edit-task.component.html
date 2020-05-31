@@ -1,1 +1,25 @@
-edit task {{ id }}
+<h1>{{ creatingNewTask ? 'Create new task' : 'Edit task' }}</h1>
+
+
+
+<div fxLayout="column">
+    <mat-form-field>
+        <mat-label>title</mat-label>
+        <input matInput [(ngModel)]="task.title">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Importance</mat-label>
+        <input matInput type="number" min="0" max="100" [(ngModel)]="task.importance">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Urgency</mat-label>
+        <input matInput type="number" min="0" max="100" [(ngModel)]="task.urgency">
+    </mat-form-field>
+</div>
+
+<a mat-raised-button color="primary" [routerLink]="PATHS.OVERVIEW()" (click)="save()">
+    {{ creatingNewTask ? 'Save new task' : 'Save changes' }}
+</a>
+<a mat-button color="secondary" [routerLink]="PATHS.OVERVIEW()">
+    cancel
+</a>

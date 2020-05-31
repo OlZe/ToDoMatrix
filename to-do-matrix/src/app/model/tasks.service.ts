@@ -24,9 +24,22 @@ export class TasksService {
         return this.tasks.find(t => t.id === id);
     }
 
+    // Sometimes you need a copy to not mess with the original Task-object's variables
+    public getTaskCopy(id: number): Task {
+        const originalTask = this.getTask(id);
+        return this.createCopyOfTask(originalTask);
+    }
+
     public addTask(newTask: NewTask) {
         const id = this.getNextId();
         this.tasks.push({ id, ...newTask });
+        this.saveTasksToLocalStorage();
+    }
+
+    public saveEditedTask(editedTask: Task) {
+        const editedTaskCopy = this.createCopyOfTask(editedTask);
+        const index = this.tasks.findIndex(t => t.id === editedTaskCopy.id);
+        this.tasks[index] = editedTaskCopy;
         this.saveTasksToLocalStorage();
     }
 
@@ -53,5 +66,11 @@ export class TasksService {
         let id: number;
         for (id = 0; this.getTask(id); id++) { }
         return id;
+    }
+
+    private createCopyOfTask(task: Task): Task {
+        const t = new Task();
+        Object.assign(t, task);
+        return task;
     }
 }
