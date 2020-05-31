@@ -1,7 +1,5 @@
+import { ROUTE_PATHS } from '../app-paths.model';
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { CreateTaskDialogComponent } from './create-task-dialog.component';
-import { TasksService } from '../model/tasks.service';
 
 @Component({
     selector: 'app-create-task-button',
@@ -9,16 +7,5 @@ import { TasksService } from '../model/tasks.service';
 })
 export class CreateTaskButtonComponent {
 
-    constructor(
-        private createTaskDialog: MatDialog,
-        private tasksService: TasksService) { }
-
-    public createNewTask() {
-        const dialogHandle = this.createTaskDialog.open(CreateTaskDialogComponent);
-        dialogHandle.afterClosed().subscribe(title => {
-            if (title) {
-                this.tasksService.addTask(title);
-            }
-        });
-    }
+    public PATHS = ROUTE_PATHS;
 }

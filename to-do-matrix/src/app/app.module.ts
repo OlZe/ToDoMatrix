@@ -15,7 +15,6 @@ import { TaskCardComponent } from './components/task-card.component';
 import { TaskListComponent } from './components/task-list.component';
 import { TasksService } from './model/tasks.service';
 import { CreateTaskButtonComponent } from './components/create-task-button.component';
-import { CreateTaskDialogComponent } from './components/create-task-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { EisenhowerMatrixComponent } from './components/eisenhower-matrix.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,7 +30,6 @@ import { TaskExistsGuard } from './model/task-exists.guard';
     TaskListComponent,
     TaskCardComponent,
     CreateTaskButtonComponent,
-    CreateTaskDialogComponent,
     EisenhowerMatrixComponent
   ],
   imports: [
