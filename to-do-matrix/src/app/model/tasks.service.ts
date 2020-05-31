@@ -79,7 +79,7 @@ export class TasksService {
     private createCopyOfTask(task: Task): Task {
         const t = new Task();
         Object.assign(t, task);
-        return task;
+        return t;
     }
 
     private getAdverbForTextRepresentation(value: number): string {
