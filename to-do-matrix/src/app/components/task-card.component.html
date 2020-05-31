@@ -1,4 +1,14 @@
 <mat-card fxLayout="row" fxLayoutAlign="space-between baseline">
-    <p>{{ task.title }}</p>
-    <button mat-icon-button (click)="deleteThisTask()"><mat-icon>delete</mat-icon></button>
+  <p>{{ task.title }}</p>
+
+  <div fxLayout="row">
+    <a mat-icon-button [routerLink]="PATHS.EDIT_TASK(task.id)">
+      <mat-icon>edit</mat-icon>
+    </a>
+
+    <button mat-icon-button (click)="deleteThisTask()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
 </mat-card>

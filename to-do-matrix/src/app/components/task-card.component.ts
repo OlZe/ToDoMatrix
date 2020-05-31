@@ -1,6 +1,7 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Task } from '../model/task.model';
 import { TasksService } from '../model/tasks.service';
+import { ROUTE_PATHS } from '../app-paths.model';
 
 @Component({
     selector: 'app-task-card',
@@ -9,6 +10,7 @@ import { TasksService } from '../model/tasks.service';
 export class TaskCardComponent {
 
     @Input() public task: Task;
+    public PATHS = ROUTE_PATHS;
 
     public constructor(private tasksService: TasksService) { }
 

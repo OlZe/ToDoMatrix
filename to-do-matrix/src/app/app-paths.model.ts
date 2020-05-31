@@ -2,7 +2,7 @@
 export const ROUTE_PATHS = {
     OVERVIEW: () => `/${PATH_DEFINITIONS.OVERVIEW}`,
     CREATE_TASK: () => `/${PATH_DEFINITIONS.CREATE_TASK}`,
-    EDIT_TASK: (taskId: string) => `/${PATH_DEFINITIONS.EDIT_TASK.replace(PATH_DEFINITIONS.EDIT_TASK_ID_KEY, taskId)}`
+    EDIT_TASK: (taskId: number) => `/${PATH_DEFINITIONS.EDIT_TASK.replace(`:${PATH_DEFINITIONS.EDIT_TASK_ID_KEY}`, taskId.toString())}`
 };
 
 // Routing paths for routing module may not start with a /
