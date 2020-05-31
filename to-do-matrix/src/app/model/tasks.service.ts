@@ -83,7 +83,7 @@ export class TasksService {
     }
 
     private getAdverbForTextRepresentation(value: number): string {
-        return  value >= 85 ? 'extremly ' :
+        return  value >= 90 ? 'extremly ' :
                 value >= 70 ? 'highly ' :
                 value >= 50 ? '' :
                 value >= 25 ? 'slightly ' :
