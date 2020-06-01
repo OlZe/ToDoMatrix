@@ -1,9 +1,11 @@
 <mat-toolbar color="primary">
-    {{ getTitlebarText() }}
+  {{ getTitlebarText() }}
 </mat-toolbar>
 
-<div style="width: 100%; padding: 5px; box-sizing: border-box;">
+<div fxLayout="column" fxLayoutAlign="start center" style="width: 100%;">
+  <div style="width: 100%; max-width: 500px; padding: 5px; box-sizing: border-box">
 
     <router-outlet></router-outlet>
 
+  </div>
 </div>
