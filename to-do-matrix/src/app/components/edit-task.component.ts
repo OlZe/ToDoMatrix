@@ -6,6 +6,7 @@ import { NewTask } from '../model/new-task.model';
 import { TasksService } from '../model/tasks.service';
 import { Task } from '../model/task.model';
 import { TitlebarService } from '../model/titlebar.service';
+import { MessageService } from '../model/message.service';
 
 @Component({
     templateUrl: './edit-task.component.html'
@@ -15,7 +16,10 @@ export class EditTaskComponent {
     public task: NewTask;
     public PATHS = ROUTE_PATHS;
 
-    constructor(private tasksService: TasksService, route: ActivatedRoute, titlebarService: TitlebarService) {
+    public constructor(
+        private tasksService: TasksService,
+        private messageService: MessageService,
+        route: ActivatedRoute, titlebarService: TitlebarService) {
         this.creatingNewTask = route.snapshot.routeConfig.path === PATH_DEFINITIONS.CREATE_TASK;
         titlebarService.setTitlebarText(this.creatingNewTask ? 'Create new task' : 'Edit task');
         const possibleId: number = Number.parseInt(route.snapshot.paramMap.get(PATH_DEFINITIONS.EDIT_TASK_ID_KEY), 10);
@@ -25,10 +29,10 @@ export class EditTaskComponent {
     public save() {
         if (this.canSave()) {
             if (this.creatingNewTask) {
-                this.tasksService.addTask(this.task);
+                this.saveNewTask();
             }
             else {
-                this.tasksService.saveEditedTask(this.task as Task);
+                this.saveEditedTask();
             }
         }
     }
@@ -61,5 +65,19 @@ export class EditTaskComponent {
             task = this.tasksService.getTaskCopy(id);
         }
         return task;
+    }
+
+    private saveEditedTask() {
+        const editedTask = this.task as Task;
+        const taskBeforeSave = this.tasksService.getTaskCopy(editedTask.id);
+        const undoFn = () => this.tasksService.saveEditedTask(taskBeforeSave);
+        this.tasksService.saveEditedTask(this.task as Task);
+        this.messageService.displayMessageWithUndoAction('Changes saved', 'Changes undone', undoFn);
+    }
+
+    private saveNewTask() {
+        const id = this.tasksService.addTask(this.task);
+        const undoFn = () => this.tasksService.deleteTask(id);
+        this.messageService.displayMessageWithUndoAction('New task created', 'New task removed', undoFn);
     }
 }

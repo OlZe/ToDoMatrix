@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { TaskCardComponent } from './components/task-card.component';
@@ -23,6 +24,7 @@ import { OverviewComponent } from './components/overview.component';
 import { EditTaskComponent } from './components/edit-task.component';
 import { TaskExistsGuard } from './model/task-exists.guard';
 import { TitlebarService } from './model/titlebar.service';
+import { MessageService } from './model/message.service';
 
 @NgModule({
   declarations: [
@@ -47,12 +49,14 @@ import { TitlebarService } from './model/titlebar.service';
     MatFormFieldModule,
     MatInputModule,
     MatToolbarModule,
+    MatSnackBarModule,
     AppRoutingModule
   ],
   providers: [
     TasksService,
     TaskExistsGuard,
-    TitlebarService
+    TitlebarService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

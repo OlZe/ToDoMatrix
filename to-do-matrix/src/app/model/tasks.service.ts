@@ -38,10 +38,12 @@ export class TasksService {
         return this.getAdverbForTextRepresentation(urgency) + 'urgent';
     }
 
-    public addTask(newTask: NewTask) {
+    /** @returns ID of task */
+    public addTask(newTask: NewTask): number {
         const id = this.getNextId();
         this.tasks.push({ id, ...newTask });
         this.saveTasksToLocalStorage();
+        return id;
     }
 
     public saveEditedTask(editedTask: Task) {
