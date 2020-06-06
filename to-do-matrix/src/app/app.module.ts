@@ -25,10 +25,12 @@ import { EditTaskComponent } from './components/edit-task.component';
 import { TaskExistsGuard } from './model/task-exists.guard';
 import { TitlebarService } from './model/titlebar.service';
 import { MessageService } from './model/message.service';
+import { TitlebarComponent } from './components/titlebar-component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    TitlebarComponent,
     OverviewComponent,
     EditTaskComponent,
     TaskListComponent,
