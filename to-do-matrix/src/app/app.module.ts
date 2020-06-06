@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { TaskCardComponent } from './components/task-card.component';
@@ -52,6 +53,7 @@ import { TitlebarComponent } from './components/titlebar-component';
     MatInputModule,
     MatToolbarModule,
     MatSnackBarModule,
+    MatTooltipModule,
     AppRoutingModule
   ],
   providers: [
