@@ -15,4 +15,8 @@ export class OverviewComponent {
     public getTasks(): Task[] {
         return this.tasksService.getTasks();
     }
+
+    public tasksExist(): boolean {
+        return this.getTasks().length > 0;
+    }
 }
